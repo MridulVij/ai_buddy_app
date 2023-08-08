@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class Ads {
@@ -6,7 +7,8 @@ class Ads {
 
   void createInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: 'ca-app-pub-3940256099942544/1033173712',
+      // image ad
+      adUnitId: 'ca-app-pub-5498431563071990/4756838043',
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
@@ -16,7 +18,9 @@ class Ads {
         onAdFailedToLoad: (error) {
           interstitialAttempts++;
           interstitialAd = null;
-          print('failed to load${error.message}');
+          if (kDebugMode) {
+            print('failed to load${error.message}');
+          }
 
           if (interstitialAttempts <= 5) {
             createInterstitialAd();
@@ -28,7 +32,9 @@ class Ads {
 
   showInterstitialAd() {
     if (interstitialAd == null) {
-      print('trying to show before loading');
+      if (kDebugMode) {
+        print('trying to show before loading');
+      }
       return;
     }
     interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
@@ -39,7 +45,9 @@ class Ads {
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
         ad.dispose();
-        print('failed to show the ad $ad');
+        if (kDebugMode) {
+          print('failed to show the ad $ad');
+        }
         createInterstitialAd();
       },
     );
