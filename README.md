@@ -1,4 +1,4 @@
-# ai_buddy
+# AI BUDDY
 
 A new Flutter project.
 
