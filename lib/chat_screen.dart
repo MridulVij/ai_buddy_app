@@ -220,7 +220,7 @@ class _ChatGPTScreenState extends State<ChatGPTScreen> {
                     const SizedBox(height: 20),
                     InkWell(
                       onTap: () {
-                        const String videoId = 'fGATLXRoJD8';
+                        const String videoId = 'BeGpktWFtR4';
                         Uri uri = Uri.parse(
                             'https://www.youtube.com/watch?v=$videoId');
                         launchUrl(uri, mode: LaunchMode.externalApplication);
